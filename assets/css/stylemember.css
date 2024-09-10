@@ -1,0 +1,442 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+header {
+    background-color: #333;
+    color: #FFCC00;
+    padding: 1rem 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+}
+nav a:hover {
+    color: #FFCC00;
+}
+.membership-container {
+    margin-top: 100px; /* Adjusted margin to avoid overlap with fixed header */
+    text-align: center;
+    padding: 2rem 1rem;
+}
+.membership-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #FFCC00;
+}
+.membership-container p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #ddd;
+}
+.plans {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+.plan-card {
+    background-color: rgba(255, 204, 0, 0.1); /* Transparent yellow background */
+    color: #fff;
+    border: 1px solid #FFCC00;
+    border-radius: 8px;
+    padding: 2rem;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background-color 0.3s;
+}
+.plan-card:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 204, 0, 0.2);
+}
+.plan-card h2 {
+    margin: 0 0 1rem 0;
+    color: #FFCC00;
+    font-size: 1.5rem;
+}
+.plan-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    font-size: 1rem;
+    color: #ddd;
+}
+.plan-card ul li {
+    margin-bottom: 0.5rem;
+}
+.plan-card button {
+    padding: 0.75rem 1.5rem;
+    background-color: #FFCC00;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 1rem;
+}
+.plan-card button:hover {
+    background-color: #000;
+    color: #FFCC00;
+}
+footer {
+    background-color: #333;
+    color: #FFCC00;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+footer a {
+    color: #FFCC00;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: color 0.3s;
+}
+footer a:hover {
+    color: #fff;
+}
+
+
+/* Popup Styles */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    background-color: #333;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.popup h3 {
+    margin-top: 0;
+    color: #FFCC00;
+    text-align: center;
+}
+.popup form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.popup label {
+    display: block;
+    cursor: pointer;
+    color: #ddd;
+}
+.popup input[type="radio"] {
+    margin-right: 10px;
+}
+.popup-buttons {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    margin-top: 1rem;
+}
+.popup-buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+.popup-buttons .confirm {
+    background-color: #FFCC00;
+    color: #000;
+    margin-right: 15px;
+}
+.popup-buttons .confirm:hover {
+    background-color: #000;
+    color: #FFCC00;
+}
+.popup-buttons .cancel {
+    background-color: #555;
+    color: #fff;
+}
+.popup-buttons .cancel:hover {
+    background-color: #777;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+
+/* Trainer Popup Styles */
+.trainer-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    background-color: #333;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.trainer-popup h3 {
+    margin-top: 0;
+    color: #FFCC00;
+    text-align: center;
+}
+.trainer-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+.trainer-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #ddd;
+    padding: 10px 20px 10px 20px;
+}
+.trainer-option img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10%;
+}
+.trainer-popup-buttons {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    margin-top: 1rem;
+}
+.trainer-popup-buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+.trainer-popup-buttons .confirm {
+    background-color: #FFCC00;
+    color: #000;
+    margin-right: 15px;
+}
+.trainer-popup-buttons .confirm:hover {
+    background-color: #000;
+    color: #FFCC00;
+}
+.trainer-popup-buttons .cancel {
+    background-color: #555;
+    color: #fff;
+}
+.trainer-popup-buttons .cancel:hover {
+    background-color: #777;
+}
+
+/* Schedule Popup Styles */
+.schedule-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    background-color: #333;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.schedule-popup h3 {
+    margin-top: 0;
+    color: #FFCC00;
+    text-align: center;
+}
+.schedule-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.schedule-popup-buttons {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    margin-top: 1rem;
+}
+.schedule-popup-buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+.schedule-popup-buttons .confirm {
+    background-color: #FFCC00;
+    color: #000;
+    margin-right: 15px;
+}
+.schedule-popup-buttons .confirm:hover {
+    background-color: #000;
+    color: #FFCC00;
+}
+.schedule-popup-buttons .cancel {
+    background-color: #555;
+    color: #fff;
+}
+.schedule-popup-buttons .cancel:hover {
+    background-color: #777;
+}
+
+
+
+
+
+
+
+
+
+
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+header {
+    background-color: #333;
+    color: #FFCC00;
+    padding: 1rem 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #FFCC00;
+}
+
+.membership-container {
+    margin-top: 100px; /* Adjusted margin to avoid overlap with fixed header */
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.membership-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #FFCC00;
+}
+
+.membership-container p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #ddd;
+}
+
+.duration-options {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 30px;
+}
+
+.duration-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(255, 204, 0, 0.1);
+    border: 1px solid #FFCC00;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 100%;
+    max-width: 400px;
+    transition: background-color 0.3s;
+}
+
+.duration-option:hover {
+    background-color: rgba(255, 204, 0, 0.2);
+}
+
+.duration-option input[type="radio"] {
+    accent-color: #FFCC00;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.duration-option label {
+    font-size: 1rem;
+    color: #ddd;
+}
+
+button[type="submit"] {
+    padding: 0.75rem 1.5rem;
+    background-color: #FFCC00;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 1rem;
+    border-radius: 4px;
+}
+
+button[type="submit"]:hover {
+    background-color: #000;
+    color: #FFCC00;
+}
